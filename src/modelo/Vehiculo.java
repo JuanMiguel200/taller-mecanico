@@ -1,6 +1,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Vehiculo implements Calculos{
     protected String marca;
@@ -9,6 +10,7 @@ public class Vehiculo implements Calculos{
     protected LocalDate fechaInfreso;
     protected LocalDate fechaSalida;
     protected Propietario elPropietario;
+    protected ArrayList<Reparacion> lasReparaciones;
 
     public Vehiculo(String marca, String placa, int modelo, LocalDate fechaInfreso, LocalDate fechaSalida, Propietario elPropietario) {
         this.marca = marca;
@@ -19,6 +21,14 @@ public class Vehiculo implements Calculos{
         this.elPropietario = elPropietario;
     }
     
+
+    public ArrayList<Reparacion> getLasReparaciones() {
+        return lasReparaciones;
+    }
+
+    public void setLasReparaciones(ArrayList<Reparacion> lasReparaciones) {
+        this.lasReparaciones = lasReparaciones;
+    }
     public void agregarReparacion(){
         
     }

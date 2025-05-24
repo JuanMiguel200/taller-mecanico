@@ -60,7 +60,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jCheckBoxCambio = new javax.swing.JCheckBox();
         jComboBoxEstado = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jButtonCrear = new javax.swing.JButton();
         jButtonAgregarReparacion = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -137,9 +137,14 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
         jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "En proceso", "Finalizado" }));
 
-        jButton1.setBackground(new java.awt.Color(153, 0, 0));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Crear");
+        jButtonCrear.setBackground(new java.awt.Color(153, 0, 0));
+        jButtonCrear.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonCrear.setText("Crear");
+        jButtonCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearActionPerformed(evt);
+            }
+        });
 
         jButtonAgregarReparacion.setBackground(new java.awt.Color(0, 255, 0));
         jButtonAgregarReparacion.setForeground(new java.awt.Color(0, 0, 0));
@@ -315,7 +320,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton9)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton1)
+                                        .addComponent(jButtonCrear)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButtonAgregarReparacion)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -422,7 +427,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonCrear)
                     .addComponent(jButton3)
                     .addComponent(jButtonAgregarReparacion)
                     .addComponent(jButton4)
@@ -496,8 +501,14 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
     private void jButtonAgregarReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarReparacionActionPerformed
         // TODO add your handling code here:
-        agregarReparacion();
+        agregarReparacion(losVehiculos);
     }//GEN-LAST:event_jButtonAgregarReparacionActionPerformed
+
+    private void jButtonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearActionPerformed
+        // TODO add your handling code here:
+        crearVehiculo(losVehiculos);
+    }//GEN-LAST:event_jButtonCrearActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -534,8 +545,16 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         });
     }
 
-    public Void agregarReparacion(ArrayList<Vehiculo> reparaciones){
-        jTextFieldDescription.getText();
+    public void agregarReparacion(ArrayList<Vehiculo> reparaciones){
+        String placa = JOptionPane.showInputDialog(null, "ingrese la placa del vehiculo").toUpperCase();
+        String description = jTextFieldDescription.getText();
+        String estado = jComboBoxEstado.getSelectedItem().toString();
+        double valorInicial = Double.parseDouble(jTextFieldVInicial.getText());
+        for(Vehiculo car : reparaciones){
+            if(car.getPlaca().equals(placa)){
+                car.get
+            }
+        }
     }
     public static String guardarVehiculos(ArrayList<Vehiculo> datos, String nombreArchivo){
         
@@ -606,11 +625,14 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             
             LocalDate fechaAfiliacion;
             fechaAfiliacion = LocalDate.parse(jTextFieldAfilicion.getText());
-            listaVehiculos.add(new ConConvenio(fechaAfiliacion, marca, placa, modelo, fechaIngreso, fechaSalida, elPropietario));
-            
+            listaVehiculos.add(new ConConvenio(fechaAfiliacion, marca, placa, modelo, fechaIngreso, fechaSalida, elPropietario));            
         }   
-        
-
+        else{
+            String aseguradora;
+            aseguradora = jTextFieldAseguradora.getText();
+            listaVehiculos.add(new SinConvenio(aseguradora, marca, placa, modelo, fechaIngreso, fechaSalida, elPropietario));
+        }
+            
         jTextAreaConsola.append("Vehículo agregado correctamente: " + placa + "\n");
         JOptionPane.showMessageDialog(this, "Vehículo creado correctamente.");
 
@@ -621,7 +643,6 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -629,6 +650,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonAgregarReparacion;
     private javax.swing.JButton jButtonCargar;
+    private javax.swing.JButton jButtonCrear;
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JCheckBox jCheckBoxCambio;
     private javax.swing.JComboBox<String> jComboBoxEstado;
