@@ -649,28 +649,44 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         return "Se creo correctamente";
     }
     
-    public static String cargarVehiculos(ArrayList<Vehiculo> datos, String nombreArchivo){
-        
+    public static String cargarVehiculos(ArrayList<Vehiculo> datos, String nombreArchivo) {
+
         ObjectInputStream entrada = null;
         ArrayList<Vehiculo> laBD = new ArrayList<>();
-        
-        try{
-            entrada = new ObjectInputStream(new FileInputStream (nombreArchivo));
-            laBD = (ArrayList<Vehiculo>) entrada.readObject();
-            datos.addAll(laBD);
-            
-        } catch(Exception e){
-            System.out.println("Error Recuperando Datos " + e.getMessage());
-        } finally {
-            
+
+        int confirmacion = JOptionPane.showConfirmDialog(
+            null,
+            "¿Desea cargar los vehículos del archivo? Esto borrará los vehículos cargados actualmente.",
+            "Confirmar Carga de Vehículos",
+            JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirmacion == JOptionPane.YES_OPTION) {
             try {
-                entrada.close();
-            } catch (Exception e){
-                System.out.println("Error cerrando");
+                entrada = new ObjectInputStream(new FileInputStream(nombreArchivo));
+                laBD = (ArrayList<Vehiculo>) entrada.readObject();
+
+                datos.clear();
+
+                datos.addAll(laBD);
+
+                return "Sus vehículos se cargaron correctamente.";
+
+            } catch (Exception e) {
+                System.out.println("Error Recuperando Datos: " + e.getMessage());
+                return "Error al cargar los vehículos: " + e.getMessage();
+            } finally {
+                try {
+                    if (entrada != null) {
+                        entrada.close();
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error cerrando: " + e.getMessage());
+                }
             }
-            
-        }  
-        return "Su archivo se cargo correctamente";
+        } else {
+            return "Carga de vehículos cancelada por el usuario.";
+        }
     }
     
 
