@@ -166,6 +166,11 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(204, 0, 0));
         jButton5.setForeground(new java.awt.Color(0, 0, 0));
         jButton5.setText("Listar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jTextFieldMecanico.setText("cambiar una vez al dia");
         jTextFieldMecanico.addActionListener(new java.awt.event.ActionListener() {
@@ -510,6 +515,14 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCrearActionPerformed
 
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        
+        String res = "";
+        res = listarVehiculos(losVehiculos);  
+        jTextAreaConsola.setText(res);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -633,7 +646,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             listaVehiculos.add(new SinConvenio(aseguradora, marca, placa, modelo, fechaIngreso, fechaSalida, elPropietario));
         }
             
-        jTextAreaConsola.append("Vehículo agregado correctamente: " + placa + "\n");
+        jTextAreaConsola.append("Se agrego el vehiculo de placa: " + placa + "\n");
         JOptionPane.showMessageDialog(this, "Vehículo creado correctamente.");
 
         } catch (Exception e) {
@@ -641,6 +654,24 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                                       "Error", JOptionPane.ERROR_MESSAGE);
     }
     }
+    
+    public String listarVehiculos(ArrayList<Vehiculo> datos) {
+        String res = "Los Vehiculos son:\n";
+        //ArrayList<Vehiculo> copiaVehiculos = new ArrayList<>(datos);
+    if (losVehiculos.isEmpty()) {
+        jTextAreaConsola.setText("No hay vehículos registrados.\n");
+    } else {
+        StringBuilder listado = new StringBuilder();
+        listado.append("LISTADO DE VEHÍCULOS REGISTRADOS:\n\n");
+            
+        for (Vehiculo v : losVehiculos) {
+        res += v.toString() + "\n";
+        }
+        jTextAreaConsola.setText(listado.toString());
+    }   
+        return res;
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
