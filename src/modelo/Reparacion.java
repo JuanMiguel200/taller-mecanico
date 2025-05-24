@@ -1,6 +1,8 @@
 package modelo;
 
-public class Reparacion {
+import java.io.Serializable;
+
+public class Reparacion implements Serializable {
     private String descripcion;
     private String estado;
     private double valorInicial;

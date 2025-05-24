@@ -1,9 +1,10 @@
 package modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Vehiculo implements Calculos{
+public class Vehiculo implements Calculos, Serializable{
     protected String marca;
     protected String placa;
     protected int modelo;
@@ -81,11 +82,7 @@ public class Vehiculo implements Calculos{
         this.elPropietario = elPropietario;
     }
 
-    @Override
-    public String toString() {
-        return "EntregaFinal{" + "marca=" + marca + ", placa=" + placa + ", modelo=" + modelo + ", fechaInfreso=" + fechaInfreso + ", fechaSalida=" + fechaSalida + ", elPropietario=" + elPropietario + '}';
-    }
-
+    
     @Override
     public double calcularTotal() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

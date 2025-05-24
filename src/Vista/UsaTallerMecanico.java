@@ -1,5 +1,6 @@
 package Vista;
 
+import modelo.Reparacion;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -85,6 +86,8 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jButtonCargar = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButtonReportePlaca = new javax.swing.JButton();
+        jTextFieldModelo = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
 
         jLabel17.setText("Información del propietario");
 
@@ -137,7 +140,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
         jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "En proceso", "Finalizado" }));
 
-        jButtonCrear.setBackground(new java.awt.Color(153, 0, 0));
+        jButtonCrear.setBackground(new java.awt.Color(51, 51, 255));
         jButtonCrear.setForeground(new java.awt.Color(0, 0, 0));
         jButtonCrear.setText("Crear");
         jButtonCrear.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +149,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }
         });
 
-        jButtonAgregarReparacion.setBackground(new java.awt.Color(0, 255, 0));
+        jButtonAgregarReparacion.setBackground(new java.awt.Color(51, 51, 255));
         jButtonAgregarReparacion.setForeground(new java.awt.Color(0, 0, 0));
         jButtonAgregarReparacion.setText("Agregar Reparacion");
         jButtonAgregarReparacion.addActionListener(new java.awt.event.ActionListener() {
@@ -198,7 +201,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
         jLabel22.setText("Convenio");
 
-        jButtonGuardar.setBackground(new java.awt.Color(204, 204, 0));
+        jButtonGuardar.setBackground(new java.awt.Color(51, 51, 255));
         jButtonGuardar.setForeground(new java.awt.Color(0, 0, 0));
         jButtonGuardar.setText("Guardar");
         jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +210,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }
         });
 
-        jButtonCargar.setBackground(new java.awt.Color(255, 255, 0));
+        jButtonCargar.setBackground(new java.awt.Color(51, 51, 255));
         jButtonCargar.setForeground(new java.awt.Color(0, 0, 0));
         jButtonCargar.setText("Cargar");
         jButtonCargar.addActionListener(new java.awt.event.ActionListener() {
@@ -234,6 +237,8 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }
         });
 
+        jLabel18.setText("Modelo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -252,37 +257,46 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jTextFieldMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                                                    .addComponent(jTextFieldPlaca)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jTextFieldIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                                                    .addComponent(jTextFieldSalida)))))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(50, 50, 50))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(67, 67, 67)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextFieldMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(163, 163, 163))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(12, 12, 12)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jComboBoxTipoVehiculo, 0, 126, Short.MAX_VALUE)
-                                            .addComponent(jTextFieldAfilicion, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextFieldAseguradora))))))
+                                            .addComponent(jTextFieldAfilicion, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldAseguradora, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jComboBoxTipoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(37, 37, 37)
+                                            .addComponent(jTextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addGap(18, 18, 18))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(40, 40, 40)))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jTextFieldSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jTextFieldIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -377,11 +391,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextFieldPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextFieldIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextFieldPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -397,7 +407,9 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18)
+                            .addComponent(jTextFieldModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -421,7 +433,11 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                             .addComponent(jLabel14)
                             .addComponent(jCheckBoxCambio)
                             .addComponent(jTextFieldMecanico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jTextFieldIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(jTextFieldSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -436,7 +452,8 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21)
-                            .addComponent(jTextFieldAfilicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextFieldAfilicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)))
                 .addComponent(jLabel11)
                 .addGap(7, 7, 7)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -535,6 +552,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
     private void jButtonReportePlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportePlacaActionPerformed
         // TODO add your handling code here:
+        reportePlaca(losVehiculos);
     }//GEN-LAST:event_jButtonReportePlacaActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -577,6 +595,25 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         });
     }
 
+    
+    public void reportePlaca(ArrayList<Vehiculo> losVehiculos){
+        String placa = JOptionPane.showInputDialog(null, "ingrese la placa de la cual desea saber").toUpperCase();
+        String res = "";
+        for(Vehiculo car : losVehiculos){
+            if(car.getPlaca().equals(placa)){
+                ArrayList<Vehiculo> carAux = new ArrayList<>();
+                carAux.add(car);
+                carAux.sort(
+                (c1,c2) -> c1.getFechaInfreso().compareTo(c2.getFechaInfreso())
+                );
+                for(Vehiculo reg : carAux){
+                    res += reg.toString();
+                }
+                    
+            }
+        }
+        jTextAreaConsola.setText(res);
+    }
     public void agregarReparacion(ArrayList<Vehiculo> reparaciones){
         ArrayList<Reparacion> lasReparaciones = new ArrayList<>();
         String placa = JOptionPane.showInputDialog(null, "ingrese la placa del vehiculo").toUpperCase();
@@ -642,12 +679,12 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         
         String nombre = jTextFieldNombre.getText();
         int cedula = Integer.parseInt(jTextFieldCedula.getText());
-        int telefono = Integer.parseInt(jTextFieldTelefono.getText());
+        long telefono = Long.parseLong(jTextFieldTelefono.getText());
         String tipoVehiculo;
         
         String marca = jTextFieldMarca.getText();
         String placa = jTextFieldPlaca.getText();
-        int modelo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el modelo (año):"));
+        int modelo = Integer.parseInt(jTextFieldModelo.getText());
     
         LocalDate fechaIngreso = LocalDate.parse(jTextFieldIngreso.getText());
         LocalDate fechaSalida = LocalDate.parse(jTextFieldSalida.getText());
@@ -668,8 +705,8 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             listaVehiculos.add(new SinConvenio(aseguradora, marca, placa, modelo, fechaIngreso, fechaSalida, elPropietario));
         }
             
-        jTextAreaConsola.append("Se agrego el vehiculo de placa: " + placa + "\n");
-        JOptionPane.showMessageDialog(this, "Vehículo creado correctamente.");
+        jTextAreaConsola.setText("Se agrego el vehiculo de placa: " + placa + "\n");
+        
 
         } catch (Exception e) {
         JOptionPane.showMessageDialog(this, "Error al crear el vehículo: " + e.getMessage(),
@@ -679,7 +716,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     
     public String listarVehiculos(ArrayList<Vehiculo> datos) {
         String res = "Los Vehiculos son:\n";
-        //ArrayList<Vehiculo> copiaVehiculos = new ArrayList<>(datos);
+        
     if (losVehiculos.isEmpty()) {
         jTextAreaConsola.setText("No hay vehículos registrados.\n");
     } else {
@@ -706,7 +743,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             //double valor = calcularTotal();
 
             JOptionPane.showMessageDialog(null,
-                "Valor a pagar: $" + valor + "\nVehículo con placa " + placa + " está a paz y salvo. Se autoriza la salida.",
+                "Valor a pagar: $" + valor + "\nVehículo con placa " + placa.toUpperCase() + " está a paz y salvo. Se autoriza la salida.",
                 "Entrega Exitosa",
                 JOptionPane.INFORMATION_MESSAGE
             );
@@ -743,6 +780,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -767,6 +805,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldIngreso;
     private javax.swing.JTextField jTextFieldMarca;
     private javax.swing.JTextField jTextFieldMecanico;
+    private javax.swing.JTextField jTextFieldModelo;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldPlaca;
     private javax.swing.JTextField jTextFieldSalida;

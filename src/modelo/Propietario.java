@@ -1,13 +1,15 @@
 package modelo;
 
+import java.io.Serializable;
 
-public class Propietario {
+
+public class Propietario implements Serializable{
     private String nombre;
     private int cedula;
-    private int telefono;
+    private long telefono;
     private int ReparacionesAcumuladas;
 
-    public Propietario(String nombre, int cedula, int telefono) {
+    public Propietario(String nombre, int cedula, long telefono) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.telefono = telefono;
@@ -30,7 +32,7 @@ public class Propietario {
         this.cedula = cedula;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
