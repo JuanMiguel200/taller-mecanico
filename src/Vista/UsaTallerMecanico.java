@@ -754,17 +754,17 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             res += "- Número de Modelo: " + reg.getModelo()+ "\n"; 
             res += "- Propietario: " + reg.getElPropietario().getNombre()+ "\n";
             if (reg instanceof ConConvenio) {
-                res += "- ¿Convenio?: Con Convenio \n";
+                res += "- ¿Convenio?: si \n";
             }else{
-                res += "- ¿Convenio?: Sin Convenio \n";
+                res += "- ¿Convenio?: no \n";
             }
             res += "- Propietario: " + reg.getElPropietario().getReparacionesAcumuladas()+ "\n";
-            res += "- Propietario: " + reg.calcularTotal()+ "\n";
+            res += "- valor a pagar: " + reg.calcularTotal()+ "\n";
         }
 
     }  
         return res;
-}
+    }
     
     public void entregarVehiculo(ArrayList<Vehiculo> lista) {
     String placa = JOptionPane.showInputDialog(null,"Ingrese la placa del vehículo que va a salir del taller:");

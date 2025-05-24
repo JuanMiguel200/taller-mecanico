@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Vehiculo implements Calculos, Serializable{
+public abstract class Vehiculo implements Calculos, Serializable{
     protected String marca;
     protected String placa;
     protected int modelo;
     protected LocalDate fechaInfreso;
     protected LocalDate fechaSalida;
     protected Propietario elPropietario;
-    protected ArrayList<Reparacion> lasReparaciones;
+    protected ArrayList<Reparacion> lasReparaciones = new ArrayList<>();
 
     public Vehiculo(String marca, String placa, int modelo, LocalDate fechaInfreso, LocalDate fechaSalida, Propietario elPropietario) {
         this.marca = marca;
@@ -30,9 +30,7 @@ public class Vehiculo implements Calculos, Serializable{
     public void setLasReparaciones(ArrayList<Reparacion> lasReparaciones) {
         this.lasReparaciones = lasReparaciones;
     }
-    public void agregarReparacion(){
-        
-    }
+   
 
     public String getMarca() {
         return marca;
