@@ -3,13 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vista;
+import modelo.*;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author jumir
  */
 public class UsaTallerMecanico extends javax.swing.JFrame {
-     
+    ArrayList<Reparacion> lasReparaciones = new ArrayList<>();
     /**
      * Creates new form UsaTallerMecanico
      */
@@ -175,6 +178,11 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jButton6.setBackground(new java.awt.Color(204, 204, 0));
         jButton6.setForeground(new java.awt.Color(0, 0, 0));
         jButton6.setText("Guardar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(255, 255, 0));
         jButton7.setForeground(new java.awt.Color(0, 0, 0));
@@ -452,6 +460,15 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     private void jTextFieldMecanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMecanicoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldMecanicoActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        
+        String res = "";
+        String nombreArchivo = JOptionPane.showInputDialog(null, "Como quiere guardar su archivo: ");
+        res = guardarVehiculos(lasReparaciones, nombreArchivo);
+
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
