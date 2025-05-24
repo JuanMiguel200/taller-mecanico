@@ -744,17 +744,25 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     public String listarVehiculos(ArrayList<Vehiculo> datos) {
         String res = "Los Vehiculos son:\n";
         
-    if (losVehiculos.isEmpty()) {
+    if (datos.isEmpty()) {
         jTextAreaConsola.setText("No hay vehículos registrados.\n");
     } else {
-        StringBuilder listado = new StringBuilder();
-        listado.append("LISTADO DE VEHÍCULOS REGISTRADOS:\n\n");
-            
-        for (Vehiculo v : losVehiculos) {
-        res += v.toString() + "\n";
+       
+        for (Vehiculo reg : datos) {
+            res += "--------------------------------------\n";
+            res += "- Placa: " + reg.getPlaca() + "\n";
+            res += "- Número de Modelo: " + reg.getModelo()+ "\n"; 
+            res += "- Propietario: " + reg.getElPropietario().getNombre()+ "\n";
+            if (reg instanceof ConConvenio) {
+                res += "- ¿Convenio?: Con Convenio \n";
+            }else{
+                res += "- ¿Convenio?: Sin Convenio \n";
+            }
+            res += "- Propietario: " + reg.getElPropietario().getReparacionesAcumuladas()+ "\n";
+            res += "- Propietario: " + reg.calcularTotal()+ "\n";
         }
-        jTextAreaConsola.setText(listado.toString());
-    }   
+
+    }  
         return res;
 }
     
