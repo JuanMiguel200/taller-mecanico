@@ -533,16 +533,14 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jTextAreaConsola.setText(res);
     }//GEN-LAST:event_jButton5ActionPerformed
 
-<<<<<<< HEAD
     private void jButtonReportePlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportePlacaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonReportePlacaActionPerformed
-=======
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         entregarVehiculo(losVehiculos);
     }//GEN-LAST:event_jButton4ActionPerformed
->>>>>>> 5cd6f8812252c10e95b9d85e310ee164bea70089
 
     /**
      * @param args the command line arguments
