@@ -139,6 +139,11 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(153, 0, 0));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Crear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(0, 255, 0));
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
@@ -488,6 +493,11 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonCargarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        crearVehiculo(losVehiculos);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -592,11 +602,14 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             
             LocalDate fechaAfiliacion;
             fechaAfiliacion = LocalDate.parse(jTextFieldAfilicion.getText());
-            listaVehiculos.add(new ConConvenio(fechaAfiliacion, marca, placa, modelo, fechaIngreso, fechaSalida, elPropietario));
-            
+            listaVehiculos.add(new ConConvenio(fechaAfiliacion, marca, placa, modelo, fechaIngreso, fechaSalida, elPropietario));            
         }   
-        
-
+        else{
+            String aseguradora;
+            aseguradora = jTextFieldAseguradora.getText();
+            listaVehiculos.add(new SinConvenio(aseguradora, marca, placa, modelo, fechaIngreso, fechaSalida, elPropietario));
+        }
+            
         jTextAreaConsola.append("Vehículo agregado correctamente: " + placa + "\n");
         JOptionPane.showMessageDialog(this, "Vehículo creado correctamente.");
 
