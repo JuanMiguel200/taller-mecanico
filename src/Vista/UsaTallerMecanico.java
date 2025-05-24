@@ -61,7 +61,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jCheckBoxCambio = new javax.swing.JCheckBox();
         jComboBoxEstado = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonAgregarReparacion = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -117,6 +117,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
         jLabel11.setText("Consola");
 
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setText("Reparaciones");
 
         jLabel13.setText("Valor inicial");
@@ -140,9 +141,14 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Crear");
 
-        jButton2.setBackground(new java.awt.Color(0, 255, 0));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Agregar Reparacion");
+        jButtonAgregarReparacion.setBackground(new java.awt.Color(0, 255, 0));
+        jButtonAgregarReparacion.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonAgregarReparacion.setText("Agregar Reparacion");
+        jButtonAgregarReparacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarReparacionActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(51, 204, 0));
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
@@ -311,7 +317,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButton1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton2)
+                                        .addComponent(jButtonAgregarReparacion)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -418,7 +424,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton3)
-                    .addComponent(jButton2)
+                    .addComponent(jButtonAgregarReparacion)
                     .addComponent(jButton4)
                     .addComponent(jButton5)
                     .addComponent(jButtonGuardar)
@@ -488,6 +494,11 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonCargarActionPerformed
 
+    private void jButtonAgregarReparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarReparacionActionPerformed
+        // TODO add your handling code here:
+        agregarReparacion();
+    }//GEN-LAST:event_jButtonAgregarReparacionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -523,6 +534,9 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         });
     }
 
+    public Void agregarReparacion(ArrayList<Vehiculo> reparaciones){
+        jTextFieldDescription.getText();
+    }
     public static String guardarVehiculos(ArrayList<Vehiculo> datos, String nombreArchivo){
         
         ObjectOutputStream salida = null;
@@ -608,12 +622,12 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButtonAgregarReparacion;
     private javax.swing.JButton jButtonCargar;
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JCheckBox jCheckBoxCambio;
