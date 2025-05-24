@@ -86,5 +86,15 @@ public class Vehiculo implements Calculos{
         return "EntregaFinal{" + "marca=" + marca + ", placa=" + placa + ", modelo=" + modelo + ", fechaInfreso=" + fechaInfreso + ", fechaSalida=" + fechaSalida + ", elPropietario=" + elPropietario + '}';
     }
 
+    @Override
+    public double calcularTotal() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public double calcularBono() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 
 }

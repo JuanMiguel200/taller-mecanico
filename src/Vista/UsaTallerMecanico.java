@@ -162,6 +162,11 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(153, 0, 0));
         jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("Entregar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(204, 0, 0));
         jButton5.setForeground(new java.awt.Color(0, 0, 0));
@@ -523,6 +528,11 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jTextAreaConsola.setText(res);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        entregarVehiculo(losVehiculos);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -671,6 +681,32 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     }   
         return res;
 }
+    
+    public void entregarVehiculo(ArrayList<Vehiculo> lista) {
+    String placa = JOptionPane.showInputDialog("Ingrese la placa del vehículo que va a salir del taller:");
+
+    boolean encontrado = false;
+
+    for (Vehiculo v : lista) {
+        if (v.getPlaca().equalsIgnoreCase(placa)) {
+            encontrado = true;
+            double valor = 12;
+            //double valor = calcularTotal();
+
+            JOptionPane.showMessageDialog(null,
+                "Valor a pagar: $" + valor + "\nVehículo con placa " + placa + " está a paz y salvo. Se autoriza la salida.",
+                "Entrega Exitosa",
+                JOptionPane.INFORMATION_MESSAGE
+            );
+            lista.remove(v);
+            break;
+        }
+        else{
+            
+        }
+    }
+}
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
