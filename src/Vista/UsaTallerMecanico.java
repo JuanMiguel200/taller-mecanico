@@ -84,7 +84,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jButtonGuardar = new javax.swing.JButton();
         jButtonCargar = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        jButtonReportePlaca = new javax.swing.JButton();
 
         jLabel17.setText("Información del propietario");
 
@@ -220,9 +220,14 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }
         });
 
-        jButton9.setBackground(new java.awt.Color(51, 255, 51));
-        jButton9.setForeground(new java.awt.Color(0, 0, 0));
-        jButton9.setText("Reeporte placa");
+        jButtonReportePlaca.setBackground(new java.awt.Color(51, 255, 51));
+        jButtonReportePlaca.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonReportePlaca.setText("Reeporte placa");
+        jButtonReportePlaca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReportePlacaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -323,7 +328,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton9)
+                                    .addComponent(jButtonReportePlaca)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButtonCrear)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -440,7 +445,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                     .addComponent(jButtonGuardar)
                     .addComponent(jButtonCargar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton9)
+                .addComponent(jButtonReportePlaca)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton8)
                 .addContainerGap())
@@ -523,6 +528,10 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jTextAreaConsola.setText(res);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButtonReportePlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportePlacaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReportePlacaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -559,15 +568,18 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     }
 
     public void agregarReparacion(ArrayList<Vehiculo> reparaciones){
+        ArrayList<Reparacion> lasReparaciones = new ArrayList<>();
         String placa = JOptionPane.showInputDialog(null, "ingrese la placa del vehiculo").toUpperCase();
         String description = jTextFieldDescription.getText();
         String estado = jComboBoxEstado.getSelectedItem().toString();
         double valorInicial = Double.parseDouble(jTextFieldVInicial.getText());
         for(Vehiculo car : reparaciones){
             if(car.getPlaca().equals(placa)){
-                car.get
+                lasReparaciones.add(new Reparacion(description, estado, valorInicial));
+                car.setLasReparaciones(lasReparaciones);
             }
         }
+        jTextAreaConsola.setText("Se agregó la reparacion a la lista");
     }
     public static String guardarVehiculos(ArrayList<Vehiculo> datos, String nombreArchivo){
         
@@ -678,11 +690,11 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonAgregarReparacion;
     private javax.swing.JButton jButtonCargar;
     private javax.swing.JButton jButtonCrear;
     private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JButton jButtonReportePlaca;
     private javax.swing.JCheckBox jCheckBoxCambio;
     private javax.swing.JComboBox<String> jComboBoxEstado;
     private javax.swing.JComboBox<String> jComboBoxTipoVehiculo;
