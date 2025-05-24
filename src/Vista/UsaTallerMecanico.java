@@ -1,14 +1,20 @@
 package Vista;
-import modelo.*;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.*;
 
 /**
  *
  * @author jumir
  */
 public class UsaTallerMecanico extends javax.swing.JFrame {
-    ArrayList<Reparacion> lasReparaciones = new ArrayList<>();
+    ArrayList<Vehiculo> losVehiculos = new ArrayList<>();
     /**
      * Creates new form UsaTallerMecanico
      */
@@ -44,7 +50,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaConsola = new javax.swing.JTextArea();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -75,8 +81,8 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jComboBoxTipoVehiculo = new javax.swing.JComboBox<>();
         jLabel22 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jButtonGuardar = new javax.swing.JButton();
+        jButtonCargar = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
 
@@ -105,9 +111,9 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
         jLabel10.setText("Teléfono");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextAreaConsola.setColumns(20);
+        jTextAreaConsola.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaConsola);
 
         jLabel11.setText("Consola");
 
@@ -171,18 +177,23 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
         jLabel22.setText("Convenio");
 
-        jButton6.setBackground(new java.awt.Color(204, 204, 0));
-        jButton6.setForeground(new java.awt.Color(0, 0, 0));
-        jButton6.setText("Guardar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonGuardar.setBackground(new java.awt.Color(204, 204, 0));
+        jButtonGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonGuardar.setText("Guardar");
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonGuardarActionPerformed(evt);
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 0));
-        jButton7.setForeground(new java.awt.Color(0, 0, 0));
-        jButton7.setText("Cargar");
+        jButtonCargar.setBackground(new java.awt.Color(255, 255, 0));
+        jButtonCargar.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonCargar.setText("Cargar");
+        jButtonCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCargarActionPerformed(evt);
+            }
+        });
 
         jButton8.setBackground(new java.awt.Color(255, 153, 153));
         jButton8.setForeground(new java.awt.Color(0, 0, 0));
@@ -308,9 +319,9 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton6)
+                                        .addComponent(jButtonGuardar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton7)))))
+                                        .addComponent(jButtonCargar)))))
                         .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -410,8 +421,8 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(jButton4)
                     .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
+                    .addComponent(jButtonGuardar)
+                    .addComponent(jButtonCargar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -457,14 +468,25 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldMecanicoActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
         // TODO add your handling code here:
         
         String res = "";
         String nombreArchivo = JOptionPane.showInputDialog(null, "Como quiere guardar su archivo: ");
-        res = guardarVehiculos(lasReparaciones, nombreArchivo);
+        res = guardarVehiculos(losVehiculos, nombreArchivo);
 
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
+
+    private void jButtonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCargarActionPerformed
+        // TODO add your handling code here:
+        String res = "";
+        String nombreArchivo = JOptionPane.showInputDialog(null, "Como se llama su archivo: ");
+        res = cargarVehiculos(losVehiculos, nombreArchivo);
+        
+        jTextAreaConsola.setText(res);
+
+
+    }//GEN-LAST:event_jButtonCargarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -501,16 +523,99 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         });
     }
 
+    public static String guardarVehiculos(ArrayList<Vehiculo> datos, String nombreArchivo){
+        
+        ObjectOutputStream salida = null;
+        
+        try{
+            salida = new ObjectOutputStream(new FileOutputStream (nombreArchivo));
+            salida.writeObject(datos);
+            
+        } catch(Exception e){
+            System.out.println("Error Almacenando Datos");
+        } finally {
+            
+            try {
+                salida.close();
+            } catch (Exception e){
+                System.out.println("Error cerrando");
+            }        
+        }
+        return "Se creo correctamente";
+    }
+    
+    public static String cargarVehiculos(ArrayList<Vehiculo> datos, String nombreArchivo){
+        
+        ObjectInputStream entrada = null;
+        ArrayList<Vehiculo> laBD = new ArrayList<>();
+        
+        try{
+            entrada = new ObjectInputStream(new FileInputStream (nombreArchivo));
+            laBD = (ArrayList<Vehiculo>) entrada.readObject();
+            datos.addAll(laBD);
+            
+        } catch(Exception e){
+            System.out.println("Error Recuperando Datos " + e.getMessage());
+        } finally {
+            
+            try {
+                entrada.close();
+            } catch (Exception e){
+                System.out.println("Error cerrando");
+            }
+            
+        }  
+        return "Su archivo se cargo correctamente";
+    }
+    
+
+    public void crearVehiculo(ArrayList<Vehiculo> listaVehiculos) {
+        try {
+        
+        String nombre = jTextFieldNombre.getText();
+        int cedula = Integer.parseInt(jTextFieldCedula.getText());
+        int telefono = Integer.parseInt(jTextFieldTelefono.getText());
+        String tipoVehiculo;
+        
+        String marca = jTextFieldMarca.getText();
+        String placa = jTextFieldPlaca.getText();
+        int modelo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el modelo (año):"));
+    
+        LocalDate fechaIngreso = LocalDate.parse(jTextFieldIngreso.getText());
+        LocalDate fechaSalida = LocalDate.parse(jTextFieldSalida.getText());
+
+        Propietario elPropietario = new Propietario(nombre,cedula,telefono);
+        
+        tipoVehiculo = jComboBoxTipoVehiculo.getSelectedItem().toString();
+
+        if ("SI".equals(tipoVehiculo)){
+            
+            LocalDate fechaAfiliacion;
+            fechaAfiliacion = LocalDate.parse(jTextFieldAfilicion.getText());
+            listaVehiculos.add(new ConConvenio(fechaAfiliacion, marca, placa, modelo, fechaIngreso, fechaSalida, elPropietario));
+            
+        }   
+        
+
+        jTextAreaConsola.append("Vehículo agregado correctamente: " + placa + "\n");
+        JOptionPane.showMessageDialog(this, "Vehículo creado correctamente.");
+
+        } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al crear el vehículo: " + e.getMessage(),
+                                      "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButtonCargar;
+    private javax.swing.JButton jButtonGuardar;
     private javax.swing.JCheckBox jCheckBoxCambio;
     private javax.swing.JComboBox<String> jComboBoxEstado;
     private javax.swing.JComboBox<String> jComboBoxTipoVehiculo;
@@ -539,7 +644,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextAreaConsola;
     private javax.swing.JTextField jTextFieldAfilicion;
     private javax.swing.JTextField jTextFieldAseguradora;
     private javax.swing.JTextField jTextFieldCedula;

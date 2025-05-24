@@ -7,10 +7,11 @@ public class Propietario {
     private int telefono;
     private int ReparacionesAcumuladas;
 
-    public Propietario(String nombre, int cedula, int telefono,int ReparacionesAcumuladas) {
+    public Propietario(String nombre, int cedula, int telefono) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.telefono = telefono;
+        this.ReparacionesAcumuladas = 0;
     }
 
     public String getNombre() {

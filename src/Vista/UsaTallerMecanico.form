@@ -172,9 +172,9 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButtonGuardar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton7" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButtonCargar" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -306,8 +306,8 @@
                   <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonCargar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jButton9" min="-2" max="-2" attributes="0"/>
@@ -383,7 +383,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="jTextAreaConsola">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -561,7 +561,7 @@
         <Property name="text" type="java.lang.String" value="Convenio"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="jButtonGuardar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="cc" red="cc" type="rgb"/>
@@ -572,10 +572,10 @@
         <Property name="text" type="java.lang.String" value="Guardar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGuardarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton7">
+    <Component class="javax.swing.JButton" name="jButtonCargar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="ff" red="ff" type="rgb"/>
@@ -585,6 +585,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Cargar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCargarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton8">
       <Properties>

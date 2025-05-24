@@ -1,3 +1,5 @@
+package modelo;
+
 public class Reparacion {
     private String descripcion;
     private String estado;
@@ -5,14 +7,14 @@ public class Reparacion {
     static private String encargado;
 
     
-    public Reparacion(String descripcion, String estado, double valorInicial, String encargado) {
+    public Reparacion (String descripcion, String estado, double valorInicial, String encargado) {
         this.descripcion = descripcion;
-        this.estado = estado;
+        this.estado = estado; 
         this.valorInicial = valorInicial;
         this.encargado = encargado;
     }
     
-    public Reparacion(String descripcion, String estado, double valorInicial) {
+    public Reparacion (String descripcion, String estado, double valorInicial) {
         this.descripcion = descripcion;
         this.estado = estado;
         this.valorInicial = valorInicial;
