@@ -758,8 +758,8 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }else{
                 res += "- ¿Convenio?: no \n";
             }
-            res += "- Propietario: " + reg.getElPropietario().getReparacionesAcumuladas()+ "\n";
-            res += "- valor a pagar: " + reg.calcularTotal()+ "\n";
+            res += "- Reparaciones: " + reg.getElPropietario().getReparacionesAcumuladas()+ "\n";
+            res += "- Valor a pagar: $" + reg.calcularTotal()+ "\n";
         }
 
     }  
