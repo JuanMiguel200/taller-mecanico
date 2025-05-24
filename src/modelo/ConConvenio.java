@@ -1,8 +1,9 @@
 package modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class ConConvenio extends Vehiculo{
+public class ConConvenio extends Vehiculo implements Serializable{
     private LocalDate fechaAfiliacion;
 
     public ConConvenio(LocalDate fechaAfiliacion, String marca, String placa, int modelo, LocalDate fechaInfreso, LocalDate fechaSalida, Propietario elPropietario) {
@@ -10,8 +11,14 @@ public class ConConvenio extends Vehiculo{
         this.fechaAfiliacion = fechaAfiliacion;
     }
     
-    public double calcularTotal(){        
-        return 0;
+    public double calcularTotal(){ 
+        double res = 0;
+        for(Reparacion rep : super.lasReparaciones){
+            res += rep.getValorInicial();
+        }
+        res = res-(res*0.2);  
+            
+        return res;
     }
     
     public double calcularBono(){        

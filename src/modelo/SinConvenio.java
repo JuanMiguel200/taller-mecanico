@@ -1,8 +1,9 @@
 package modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class SinConvenio extends Vehiculo{
+public class SinConvenio extends Vehiculo implements Serializable{
     private String aseguradora;
 
     public SinConvenio(String aseguradora, String marca, String placa, int modelo, LocalDate fechaInfreso, LocalDate fechaSalida, Propietario elPropietario) {
@@ -11,7 +12,11 @@ public class SinConvenio extends Vehiculo{
     }
     
     public double calcularTotal(){        
-        return 0;
+        double res = 0;
+        for(Reparacion rep : super.lasReparaciones){
+            res += rep.getValorInicial();
+        }  
+        return res;
     }
     
     public double calcularBono(){        

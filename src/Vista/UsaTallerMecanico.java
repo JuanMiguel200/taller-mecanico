@@ -63,9 +63,9 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jComboBoxEstado = new javax.swing.JComboBox<>();
         jButtonCrear = new javax.swing.JButton();
         jButtonAgregarReparacion = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jButtonFactura = new javax.swing.JButton();
+        jButtonEntregar = new javax.swing.JButton();
+        jButtonListar = new javax.swing.JButton();
         jTextFieldMarca = new javax.swing.JTextField();
         jTextFieldPlaca = new javax.swing.JTextField();
         jTextFieldIngreso = new javax.swing.JTextField();
@@ -88,6 +88,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jButtonReportePlaca = new javax.swing.JButton();
         jTextFieldModelo = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
+        jButtonCambiarEstado = new javax.swing.JButton();
 
         jLabel17.setText("Información del propietario");
 
@@ -141,8 +142,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "En proceso", "Finalizado" }));
 
         jButtonCrear.setBackground(new java.awt.Color(51, 51, 255));
-        jButtonCrear.setForeground(new java.awt.Color(0, 0, 0));
-        jButtonCrear.setText("Crear");
+        jButtonCrear.setText("Agregar vehiculo");
         jButtonCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCrearActionPerformed(evt);
@@ -150,7 +150,6 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         });
 
         jButtonAgregarReparacion.setBackground(new java.awt.Color(51, 51, 255));
-        jButtonAgregarReparacion.setForeground(new java.awt.Color(0, 0, 0));
         jButtonAgregarReparacion.setText("Agregar Reparacion");
         jButtonAgregarReparacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,25 +157,22 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(51, 204, 0));
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("Factura");
+        jButtonFactura.setBackground(new java.awt.Color(51, 204, 0));
+        jButtonFactura.setText("Factura");
 
-        jButton4.setBackground(new java.awt.Color(153, 0, 0));
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setText("Entregar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEntregar.setBackground(new java.awt.Color(153, 0, 0));
+        jButtonEntregar.setText("Entregar");
+        jButtonEntregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonEntregarActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(204, 0, 0));
-        jButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jButton5.setText("Listar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonListar.setBackground(new java.awt.Color(204, 0, 0));
+        jButtonListar.setText("Listar");
+        jButtonListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonListarActionPerformed(evt);
             }
         });
 
@@ -202,7 +198,6 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jLabel22.setText("Convenio");
 
         jButtonGuardar.setBackground(new java.awt.Color(51, 51, 255));
-        jButtonGuardar.setForeground(new java.awt.Color(0, 0, 0));
         jButtonGuardar.setText("Guardar");
         jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,7 +206,6 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         });
 
         jButtonCargar.setBackground(new java.awt.Color(51, 51, 255));
-        jButtonCargar.setForeground(new java.awt.Color(0, 0, 0));
         jButtonCargar.setText("Cargar");
         jButtonCargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,7 +214,6 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         });
 
         jButton8.setBackground(new java.awt.Color(255, 153, 153));
-        jButton8.setForeground(new java.awt.Color(0, 0, 0));
         jButton8.setText("Salir");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +222,6 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         });
 
         jButtonReportePlaca.setBackground(new java.awt.Color(51, 255, 51));
-        jButtonReportePlaca.setForeground(new java.awt.Color(0, 0, 0));
         jButtonReportePlaca.setText("Reeporte placa");
         jButtonReportePlaca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,6 +230,13 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         });
 
         jLabel18.setText("Modelo");
+
+        jButtonCambiarEstado.setText("Cambiar estado");
+        jButtonCambiarEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCambiarEstadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -347,17 +346,20 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonReportePlaca)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButtonReportePlaca)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButtonCambiarEstado))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jButtonCrear)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButtonAgregarReparacion)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton3)
+                                        .addComponent(jButtonFactura)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton4)
+                                        .addComponent(jButtonEntregar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton5)
+                                        .addComponent(jButtonListar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButtonGuardar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -460,14 +462,16 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCrear)
-                    .addComponent(jButton3)
+                    .addComponent(jButtonFactura)
                     .addComponent(jButtonAgregarReparacion)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
+                    .addComponent(jButtonEntregar)
+                    .addComponent(jButtonListar)
                     .addComponent(jButtonGuardar)
                     .addComponent(jButtonCargar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonReportePlaca)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonReportePlaca)
+                    .addComponent(jButtonCambiarEstado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton8)
                 .addContainerGap())
@@ -542,23 +546,27 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCrearActionPerformed
 
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
         // TODO add your handling code here:
         
         String res = "";
         res = listarVehiculos(losVehiculos);  
         jTextAreaConsola.setText(res);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButtonListarActionPerformed
 
     private void jButtonReportePlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportePlacaActionPerformed
         // TODO add your handling code here:
         reportePlaca(losVehiculos);
     }//GEN-LAST:event_jButtonReportePlacaActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonEntregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntregarActionPerformed
         // TODO add your handling code here:
         entregarVehiculo(losVehiculos);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonEntregarActionPerformed
+
+    private void jButtonCambiarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCambiarEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCambiarEstadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -600,14 +608,14 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         String placa = JOptionPane.showInputDialog(null, "ingrese la placa de la cual desea saber").toUpperCase();
         String res = "";
         for(Vehiculo car : losVehiculos){
-            if(car.getPlaca().equals(placa)){
+            if(car.getPlaca().toUpperCase().equals(placa)){
                 ArrayList<Vehiculo> carAux = new ArrayList<>();
                 carAux.add(car);
                 carAux.sort(
                 (c1,c2) -> c1.getFechaInfreso().compareTo(c2.getFechaInfreso())
                 );
                 for(Vehiculo reg : carAux){
-                    res += reg.toString();
+                    res += reg.toString()+ "\n";
                 }
                     
             }
@@ -624,6 +632,9 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             if(car.getPlaca().equals(placa)){
                 lasReparaciones.add(new Reparacion(description, estado, valorInicial));
                 car.setLasReparaciones(lasReparaciones);
+                Propietario elPropietario = car.getElPropietario();
+                int reparacionesActuales = elPropietario.getReparacionesAcumuladas();
+                elPropietario.setReparacionesAcumuladas(reparacionesActuales + 1);
             }
         }
         jTextAreaConsola.setText("Se agregó la reparacion a la lista");
@@ -748,26 +759,25 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 }
     
     public void entregarVehiculo(ArrayList<Vehiculo> lista) {
-    String placa = JOptionPane.showInputDialog("Ingrese la placa del vehículo que va a salir del taller:");
+    String placa = JOptionPane.showInputDialog(null,"Ingrese la placa del vehículo que va a salir del taller:");
 
-    boolean encontrado = false;
 
     for (Vehiculo v : lista) {
         if (v.getPlaca().equalsIgnoreCase(placa)) {
-            encontrado = true;
-            double valor = 12;
-            //double valor = calcularTotal();
+            for(Reparacion rep: v.getLasReparaciones()){
+                if(rep.getEstado() != "Finalizado"){
+                    JOptionPane.showMessageDialog(null, "faltan reparaciones por finalizar, por favor cambie el estado");
+                    break;
+                }
+            }
+            double valor = v.calcularTotal();
 
-            JOptionPane.showMessageDialog(null,
-                "Valor a pagar: $" + valor + "\nVehículo con placa " + placa.toUpperCase() + " está a paz y salvo. Se autoriza la salida.",
-                "Entrega Exitosa",
-                JOptionPane.INFORMATION_MESSAGE
-            );
-            lista.remove(v);
+            jTextAreaConsola.setText("Valor a pagar: $" + valor + "\nVehículo con placa " + placa.toUpperCase() + " está a paz y salvo. Se autoriza la salida.");
+               
             break;
         }
         else{
-            
+            JOptionPane.showMessageDialog(null, "no se encontró el vehiculo que buscaba");
         }
     }
 }
@@ -775,14 +785,15 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButtonAgregarReparacion;
+    private javax.swing.JButton jButtonCambiarEstado;
     private javax.swing.JButton jButtonCargar;
     private javax.swing.JButton jButtonCrear;
+    private javax.swing.JButton jButtonEntregar;
+    private javax.swing.JButton jButtonFactura;
     private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JButton jButtonListar;
     private javax.swing.JButton jButtonReportePlaca;
     private javax.swing.JCheckBox jCheckBoxCambio;
     private javax.swing.JComboBox<String> jComboBoxEstado;
