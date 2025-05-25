@@ -2,6 +2,7 @@ package modelo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ConConvenio extends Vehiculo implements Serializable{
     private LocalDate fechaAfiliacion;
@@ -11,13 +12,14 @@ public class ConConvenio extends Vehiculo implements Serializable{
         this.fechaAfiliacion = fechaAfiliacion;
     }
     
-    public double calcularTotal(){ 
+    @Override
+    public double calcularTotal(ArrayList<Reparacion> data){        
         double res = 0;
-        for(Reparacion rep : super.lasReparaciones){
+        for(Reparacion rep : data){
             res += rep.getValorInicial();
-        }
-        res = res-(res*0.2);  
             
+        }  
+        res = res*0.8;
         return res;
     }
     

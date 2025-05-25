@@ -8,21 +8,30 @@ public abstract class Vehiculo implements Calculos, Serializable{
     protected String marca;
     protected String placa;
     protected int modelo;
-    protected LocalDate fechaInfreso;
+    protected LocalDate fechaIngreso;
     protected LocalDate fechaSalida;
+    protected boolean pazSalvo = false;
     protected Propietario elPropietario;
     protected ArrayList<Reparacion> lasReparaciones = new ArrayList<>();
 
-    public Vehiculo(String marca, String placa, int modelo, LocalDate fechaInfreso, LocalDate fechaSalida, Propietario elPropietario) {
+    public Vehiculo(String marca, String placa, int modelo, LocalDate fechaIngreso, LocalDate fechaSalida, Propietario elPropietario) {
         this.marca = marca;
         this.placa = placa;
         this.modelo = modelo;
-        this.fechaInfreso = fechaInfreso;
+        this.fechaIngreso = fechaIngreso;
         this.fechaSalida = fechaSalida;
         this.elPropietario = elPropietario;
     }
-    
 
+    public boolean isPazSalvo() {
+        return pazSalvo;
+    }
+
+    public void setPazSalvo(boolean pazSalvo) {
+        this.pazSalvo = pazSalvo;
+    }
+    
+    
     public ArrayList<Reparacion> getLasReparaciones() {
         return lasReparaciones;
     }
@@ -56,12 +65,12 @@ public abstract class Vehiculo implements Calculos, Serializable{
         this.modelo = modelo;
     }
 
-    public LocalDate getFechaInfreso() {
-        return fechaInfreso;
+    public LocalDate getFechaIngreso() {
+        return fechaIngreso;
     }
 
-    public void setFechaInfreso(LocalDate fechaInfreso) {
-        this.fechaInfreso = fechaInfreso;
+    public void setFechaIngreso(LocalDate fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
     }
 
     public LocalDate getFechaSalida() {
@@ -80,16 +89,13 @@ public abstract class Vehiculo implements Calculos, Serializable{
         this.elPropietario = elPropietario;
     }
 
-    
     @Override
-    public double calcularTotal() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String toString() {
+        return "Vehiculo{" + "marca=" + marca + ", placa=" + placa + ", modelo=" + modelo + ", fechaIngreso=" + fechaIngreso + ", fechaSalida=" + fechaSalida + ", elPropietario=" + elPropietario + ", lasReparaciones=" + lasReparaciones + '}';
     }
 
-    @Override
-    public double calcularBono() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
+   
 
 
 }

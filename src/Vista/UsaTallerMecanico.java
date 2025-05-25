@@ -24,7 +24,6 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         initComponents();
         jTextFieldAseguradora.setVisible(false);
         jLabel20.setVisible(false);
-        jTextFieldMecanico.setEnabled(false);
     }
 
     /**
@@ -38,6 +37,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
         jLabel17 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
+        jCheckBoxCambio = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -59,7 +59,6 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jCheckBoxCambio = new javax.swing.JCheckBox();
         jComboBoxEstado = new javax.swing.JComboBox<>();
         jButtonCrear = new javax.swing.JButton();
         jButtonAgregarReparacion = new javax.swing.JButton();
@@ -91,6 +90,13 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         jButtonCambiarEstado = new javax.swing.JButton();
 
         jLabel17.setText("Información del propietario");
+
+        jCheckBoxCambio.setText("Cambiar");
+        jCheckBoxCambio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxCambioActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,16 +138,8 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
         jLabel16.setText("Estado");
 
-        jCheckBoxCambio.setText("Cambiar");
-        jCheckBoxCambio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxCambioActionPerformed(evt);
-            }
-        });
-
         jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "En proceso", "Finalizado" }));
 
-        jButtonCrear.setBackground(new java.awt.Color(51, 51, 255));
         jButtonCrear.setText("Agregar vehiculo");
         jButtonCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,7 +147,6 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }
         });
 
-        jButtonAgregarReparacion.setBackground(new java.awt.Color(51, 51, 255));
         jButtonAgregarReparacion.setText("Agregar Reparacion");
         jButtonAgregarReparacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,10 +154,13 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }
         });
 
-        jButtonFactura.setBackground(new java.awt.Color(51, 204, 0));
         jButtonFactura.setText("Factura");
+        jButtonFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFacturaActionPerformed(evt);
+            }
+        });
 
-        jButtonEntregar.setBackground(new java.awt.Color(153, 0, 0));
         jButtonEntregar.setText("Entregar");
         jButtonEntregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,7 +168,6 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }
         });
 
-        jButtonListar.setBackground(new java.awt.Color(204, 0, 0));
         jButtonListar.setText("Listar");
         jButtonListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +175,13 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldMecanico.setText("cambiar una vez al dia");
+        jTextFieldIngreso.setText("yyyy-mm-dd");
+        jTextFieldIngreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIngresoActionPerformed(evt);
+            }
+        });
+
         jTextFieldMecanico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldMecanicoActionPerformed(evt);
@@ -197,7 +202,6 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
         jLabel22.setText("Convenio");
 
-        jButtonGuardar.setBackground(new java.awt.Color(51, 51, 255));
         jButtonGuardar.setText("Guardar");
         jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +209,6 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }
         });
 
-        jButtonCargar.setBackground(new java.awt.Color(51, 51, 255));
         jButtonCargar.setText("Cargar");
         jButtonCargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,7 +216,8 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(255, 153, 153));
+        jButton8.setBackground(new java.awt.Color(255, 51, 51));
+        jButton8.setForeground(new java.awt.Color(0, 0, 0));
         jButton8.setText("Salir");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,7 +225,6 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }
         });
 
-        jButtonReportePlaca.setBackground(new java.awt.Color(51, 255, 51));
         jButtonReportePlaca.setText("Reeporte placa");
         jButtonReportePlaca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,9 +339,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextFieldVInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCheckBoxCambio)
-                                .addGap(30, 30, 30))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -433,7 +434,6 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
-                            .addComponent(jCheckBoxCambio)
                             .addComponent(jTextFieldMecanico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -566,7 +566,18 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
     private void jButtonCambiarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCambiarEstadoActionPerformed
         // TODO add your handling code here:
+        
+        cambiarEstado(losVehiculos);
     }//GEN-LAST:event_jButtonCambiarEstadoActionPerformed
+
+    private void jTextFieldIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIngresoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIngresoActionPerformed
+
+    private void jButtonFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFacturaActionPerformed
+        // TODO add your handling code here:
+        factura(losVehiculos);
+    }//GEN-LAST:event_jButtonFacturaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -602,42 +613,125 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }
         });
     }
-
-    
-    public void reportePlaca(ArrayList<Vehiculo> losVehiculos){
+    public void factura(ArrayList<Vehiculo> datos){
         String placa = JOptionPane.showInputDialog(null, "ingrese la placa de la cual desea saber").toUpperCase();
         String res = "";
+        for(Vehiculo car :datos){
+            if(car.getPlaca().toUpperCase().equals(placa) && !car.isPazSalvo()){
+                for(Reparacion rep : car.getLasReparaciones()){
+                    if(rep.getEstado().equals("Finalizado")){
+                        res += "--------------------------------------";
+                        res += "- Descripcion " + rep.getDescripcion()+ "\n"; 
+                        res += "- Valor inicial " + rep.getValorInicial()+ "\n"; 
+                        res += "- reparaciones acumuladas: " +car.getElPropietario().getReparacionesAcumuladas()+ "\n";
+                    }
+                    else{
+                        res = "ERROR: No han terminado todas las reparaciones vuelva a intentarlo en otro momento";
+                    }
+                        
+                }
+                res += "- Valor Final " + car.calcularTotal(car.getLasReparaciones())+ "\n"; 
+            }
+        }
+        jTextAreaConsola.setText(res);
+    }
+    public void cambiarEstado(ArrayList<Vehiculo> datos){
+        String placa = JOptionPane.showInputDialog(null, "ingrese la placa de la cual desea saber").toUpperCase();
+        ArrayList<String> opciones = new ArrayList<>();
+        for(Vehiculo car :datos){
+            if(car.getPlaca().equals(placa) && !car.isPazSalvo()){
+                for(Reparacion rep : car.getLasReparaciones()){
+                    if(rep.getEstado().equals("En proceso"))
+                        opciones.add(rep.getDescripcion());
+                }
+            }
+        }
+        String seleccion = (String) JOptionPane.showInputDialog(
+            null,
+            "Elige una opción:",
+            "Selector",
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            opciones.toArray(),
+            opciones.getFirst()
+        );
+        for(Vehiculo car :datos){
+            if(car.getPlaca().equals(placa) && !car.isPazSalvo()){
+                for(Reparacion rep : car.getLasReparaciones()){
+                    if(rep.getEstado().equals("En proceso")&& rep.getDescripcion().equals(seleccion))
+                     rep.setEstado("Finalizado");
+                }
+            }
+        }
+    }
+    public void reportePlaca(ArrayList<Vehiculo> losVehiculos){
+        String placa = JOptionPane.showInputDialog(null, "ingrese la placa de la cual desea saber").toUpperCase();
+        String res = "su factura contiene: \n";
         for(Vehiculo car : losVehiculos){
-            if(car.getPlaca().toUpperCase().equals(placa)){
+            if(car.getPlaca().toUpperCase().equals(placa) && car.getLasReparaciones().size() != 0){
                 ArrayList<Vehiculo> carAux = new ArrayList<>();
                 carAux.add(car);
                 carAux.sort(
-                (c1,c2) -> c1.getFechaInfreso().compareTo(c2.getFechaInfreso())
+                (c2,c1) -> c1.getFechaIngreso().compareTo(c2.getFechaIngreso())
                 );
                 for(Vehiculo reg : carAux){
-                    res += reg.toString()+ "\n";
+                    res += "--------------------------------------\n";
+                    res += "- Placa: " + reg.getPlaca() + "\n";
+                    res += "- Modelo: " + reg.getModelo()+ "\n"; 
+                    res += "- Fecha de ingreso: " + reg.getFechaIngreso()+ "\n"; 
+                    res += "- ¿Paz y salvo?: " + reg.isPazSalvo()+ "\n"; 
+                    res += "- Propietario: " + reg.getElPropietario().getNombre()+ "\n";
+                    if (reg instanceof ConConvenio) {
+                        res += "- ¿Convenio?: si \n";
+                    }else{
+                        res += "- ¿Convenio?: no \n";
+                    }   
+                    res += "- Reparaciones acumuladas: " + reg.getElPropietario().getReparacionesAcumuladas()+ "\n";
+                    for(Reparacion rep : reg.getLasReparaciones()){
+                        res +=  "///////// \n";
+                        res += "- Reparaciones " + rep.toString()+ "\n"; 
+                    }
+                    
+                    res += "- valor a pagar: " + reg.calcularTotal(reg.getLasReparaciones())+ "\n";
                 }
                     
+            }else{
+                jTextAreaConsola.setText("ERROR no hay reparaciones");
             }
         }
         jTextAreaConsola.setText(res);
     }
     public void agregarReparacion(ArrayList<Vehiculo> reparaciones){
-        ArrayList<Reparacion> lasReparaciones = new ArrayList<>();
-        String placa = JOptionPane.showInputDialog(null, "ingrese la placa del vehiculo").toUpperCase();
-        String description = jTextFieldDescription.getText();
-        String estado = jComboBoxEstado.getSelectedItem().toString();
-        double valorInicial = Double.parseDouble(jTextFieldVInicial.getText());
-        for(Vehiculo car : reparaciones){
-            if(car.getPlaca().equals(placa)){
-                lasReparaciones.add(new Reparacion(description, estado, valorInicial));
-                car.setLasReparaciones(lasReparaciones);
-                Propietario elPropietario = car.getElPropietario();
-                int reparacionesActuales = elPropietario.getReparacionesAcumuladas();
-                elPropietario.setReparacionesAcumuladas(reparacionesActuales + 1);
+        try {
+            boolean flag = false;
+            ArrayList<Reparacion> lasReparaciones = new ArrayList<>();
+            String placa = JOptionPane.showInputDialog(null, "ingrese la placa del vehiculo").toUpperCase();
+            String description = jTextFieldDescription.getText();
+            String estado = jComboBoxEstado.getSelectedItem().toString();
+            String mecanico = jTextFieldMecanico.getText();
+            double valorInicial = Double.parseDouble(jTextFieldVInicial.getText());
+            for(Vehiculo car : reparaciones){
+                if(car.getPlaca().equals(placa)){
+                    lasReparaciones.add(new Reparacion(description, estado, valorInicial,mecanico));
+                    car.setLasReparaciones(lasReparaciones);
+                    Propietario elPropietario = car.getElPropietario();
+                    int reparacionesActuales = elPropietario.getReparacionesAcumuladas();
+                    elPropietario.setReparacionesAcumuladas(reparacionesActuales + 1);
+                    flag = true;
+                }else{
+                    flag = false;
+                }
             }
+            if(flag){
+               jTextAreaConsola.setText("Se agregó la reparacion a la lista"); 
+            }else{
+                jTextAreaConsola.setText("ERROR el vehiculo no existe");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Revise que los datos sean correctos y el vehiculo exista");
         }
-        jTextAreaConsola.setText("Se agregó la reparacion a la lista");
+        
+        
     }
     public static String guardarVehiculos(ArrayList<Vehiculo> datos, String nombreArchivo){
         
@@ -749,17 +843,20 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     } else {
        
         for (Vehiculo reg : datos) {
-            res += "--------------------------------------\n";
-            res += "- Placa: " + reg.getPlaca() + "\n";
-            res += "- Número de Modelo: " + reg.getModelo()+ "\n"; 
-            res += "- Propietario: " + reg.getElPropietario().getNombre()+ "\n";
-            if (reg instanceof ConConvenio) {
-                res += "- ¿Convenio?: si \n";
-            }else{
-                res += "- ¿Convenio?: no \n";
+            if(!reg.isPazSalvo()){
+                res += "--------------------------------------\n";
+                res += "- Placa: " + reg.getPlaca() + "\n";
+                res += "- Número de Modelo: " + reg.getModelo()+ "\n"; 
+                res += "- Propietario: " + reg.getElPropietario().getNombre()+ "\n";
+                if (reg instanceof ConConvenio) {
+                    res += "- ¿Convenio?: si \n";
+                }else{
+                    res += "- ¿Convenio?: no \n";
+                }
+                res += "- Numero de reparaciones: " + reg.getElPropietario().getReparacionesAcumuladas()+ "\n";
+                res += "- valor a pagar: " + reg.calcularTotal(reg.getLasReparaciones())+ "\n";
+                
             }
-            res += "- Propietario: " + reg.getElPropietario().getReparacionesAcumuladas()+ "\n";
-            res += "- valor a pagar: " + reg.calcularTotal()+ "\n";
         }
 
     }  
@@ -768,26 +865,40 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     
     public void entregarVehiculo(ArrayList<Vehiculo> lista) {
     String placa = JOptionPane.showInputDialog(null,"Ingrese la placa del vehículo que va a salir del taller:");
-
+    boolean encontrado = true;
 
     for (Vehiculo v : lista) {
-        if (v.getPlaca().equalsIgnoreCase(placa)) {
+        
+        if (v.getPlaca().equalsIgnoreCase(placa) && !v.isPazSalvo()) {
+            boolean flag = false;
+            ArrayList<Reparacion> entregado= new ArrayList<>();
             for(Reparacion rep: v.getLasReparaciones()){
-                if(rep.getEstado() != "Finalizado"){
+                if(rep.getEstado().equals("En proceso" ) ){
                     JOptionPane.showMessageDialog(null, "faltan reparaciones por finalizar, por favor cambie el estado");
+                    flag = false;
                     break;
+                }else{
+                    entregado.add(rep);
+                    flag = true;
                 }
             }
-            double valor = v.calcularTotal();
-
-            jTextAreaConsola.setText("Valor a pagar: $" + valor + "\nVehículo con placa " + placa.toUpperCase() + " está a paz y salvo. Se autoriza la salida.");
-               
-            break;
+            if(flag){
+                double valor = v.calcularTotal(entregado);
+                v.setPazSalvo(true);
+                jTextAreaConsola.setText("Valor a pagar: $" + valor + "\nVehículo con placa " + placa.toUpperCase() + " está a paz y salvo. Se autoriza la salida.");
+                encontrado = true;
+            }
+            
         }
         else{
-            JOptionPane.showMessageDialog(null, "no se encontró el vehiculo que buscaba");
+            encontrado = false;
+            
         }
+        
     }
+    if(!encontrado){
+            JOptionPane.showMessageDialog(null, "no se encontró el vehiculo que buscaba o ya está paz y salvo");
+        }
 }
 
 

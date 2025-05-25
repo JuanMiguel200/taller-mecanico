@@ -9,6 +9,14 @@
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator4">
     </Component>
+    <Component class="javax.swing.JCheckBox" name="jCheckBoxCambio">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cambiar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxCambioActionPerformed"/>
+      </Events>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -160,9 +168,7 @@
                                       <Component id="jTextFieldVInicial" min="-2" pref="126" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jCheckBoxCambio" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace min="30" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -284,7 +290,6 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBoxCambio" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextFieldMecanico" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -449,14 +454,6 @@
         <Property name="text" type="java.lang.String" value="Estado"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxCambio">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cambiar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxCambioActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JComboBox" name="jComboBoxEstado">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -472,9 +469,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonCrear">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="33" red="33" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Agregar vehiculo"/>
       </Properties>
       <Events>
@@ -483,9 +477,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonAgregarReparacion">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="33" red="33" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Agregar Reparacion"/>
       </Properties>
       <Events>
@@ -494,17 +485,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonFactura">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="cc" red="33" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Factura"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFacturaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonEntregar">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="99" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Entregar"/>
       </Properties>
       <Events>
@@ -513,9 +501,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonListar">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="cc" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Listar"/>
       </Properties>
       <Events>
@@ -527,6 +512,12 @@
     <Component class="javax.swing.JTextField" name="jTextFieldPlaca">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldIngreso">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="yyyy-mm-dd"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldIngresoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldSalida">
     </Component>
@@ -541,9 +532,6 @@
     <Component class="javax.swing.JTextField" name="jTextFieldVInicial">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldMecanico">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="cambiar una vez al dia"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldMecanicoActionPerformed"/>
       </Events>
@@ -586,9 +574,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonGuardar">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="33" red="33" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Guardar"/>
       </Properties>
       <Events>
@@ -597,9 +582,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonCargar">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="33" red="33" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Cargar"/>
       </Properties>
       <Events>
@@ -609,7 +591,10 @@
     <Component class="javax.swing.JButton" name="jButton8">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="99" red="ff" type="rgb"/>
+          <Color blue="33" green="33" red="ff" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
@@ -619,9 +604,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonReportePlaca">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="ff" red="33" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Reeporte placa"/>
       </Properties>
       <Events>

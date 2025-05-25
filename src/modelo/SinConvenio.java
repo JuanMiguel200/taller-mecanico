@@ -2,6 +2,7 @@ package modelo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class SinConvenio extends Vehiculo implements Serializable{
     private String aseguradora;
@@ -10,10 +11,10 @@ public class SinConvenio extends Vehiculo implements Serializable{
         super(marca, placa, modelo, fechaInfreso, fechaSalida, elPropietario);
         this.aseguradora = aseguradora;
     }
-    
-    public double calcularTotal(){        
+    @Override
+    public double calcularTotal(ArrayList<Reparacion> data){        
         double res = 0;
-        for(Reparacion rep : super.lasReparaciones){
+        for(Reparacion rep : data){
             res += rep.getValorInicial();
         }  
         return res;
@@ -35,5 +36,8 @@ public class SinConvenio extends Vehiculo implements Serializable{
     public String toString() {
         return "SinConvenio{" + "aseguradora=" + aseguradora + super.toString()+ '}';
     }
+
+    
+    
     
 }

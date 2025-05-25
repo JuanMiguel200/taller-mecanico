@@ -6,7 +6,7 @@ public class Reparacion implements Serializable {
     private String descripcion;
     private String estado;
     private double valorInicial;
-    static private String encargado;
+    private String encargado;
 
     
     public Reparacion (String descripcion, String estado, double valorInicial, String encargado) {
@@ -16,11 +16,6 @@ public class Reparacion implements Serializable {
         this.encargado = encargado;
     }
     
-    public Reparacion (String descripcion, String estado, double valorInicial) {
-        this.descripcion = descripcion;
-        this.estado = estado;
-        this.valorInicial = valorInicial;
-    }
 
     public String getDescripcion() {
         return descripcion;
@@ -46,12 +41,12 @@ public class Reparacion implements Serializable {
         this.valorInicial = valorInicial;
     }
 
-    public static String getEncargado() {
+    public String getEncargado() {
         return encargado;
     }
 
-    public static void setEncargado(String encargado) {
-        Reparacion.encargado = encargado;
+    public void setEncargado(String encargado) {
+        this.encargado = encargado;
     }
 
     @Override
