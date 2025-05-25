@@ -225,7 +225,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             }
         });
 
-        jButtonReportePlaca.setText("Reeporte placa");
+        jButtonReportePlaca.setText("Reporte placa");
         jButtonReportePlaca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonReportePlacaActionPerformed(evt);
@@ -632,6 +632,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
 
                     }
                     res += "- Valor Final " + car.calcularTotal(car.getLasReparaciones())+ "\n"; 
+                    res += "- valor mas bono: " + car.calcularBono(car)+ "\n";
                 }else{
                     res = "ERROR el vehiculo no existe o ya esta a paz y salvo";
                 }
@@ -671,6 +672,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
                     }
                 }
             }
+            jTextAreaConsola.setText("cambio de estaado para "+ placa +" correcto");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR: " +e.getMessage());
         }
@@ -679,39 +681,40 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     public void reportePlaca(ArrayList<Vehiculo> losVehiculos){
         try {
             String placa = JOptionPane.showInputDialog(null, "ingrese la placa de la cual desea saber").toUpperCase();
-            String res = "su factura contiene: \n";
+            String res = "el vehiculo con la placa"+ placa+" contiene: \n";
+            ArrayList<Vehiculo> carAux = new ArrayList<>();
             for(Vehiculo car : losVehiculos){
-                if(car.getPlaca().toUpperCase().equals(placa) && car.getLasReparaciones().size() != 0){
-                    ArrayList<Vehiculo> carAux = new ArrayList<>();
+                if(car.getPlaca().equalsIgnoreCase(placa) && car.getLasReparaciones().size() != 0){
                     carAux.add(car);
-                    carAux.sort(
-                    (c2,c1) -> c1.getFechaIngreso().compareTo(c2.getFechaIngreso())
-                    );
-                    for(Vehiculo reg : carAux){
-                        res += "--------------------------------------\n";
-                        res += "- Placa: " + reg.getPlaca() + "\n";
-                        res += "- Modelo: " + reg.getModelo()+ "\n"; 
-                        res += "- Fecha de ingreso: " + reg.getFechaIngreso()+ "\n"; 
-                        res += "- ¿Paz y salvo?: " + reg.isPazSalvo()+ "\n"; 
-                        res += "- Propietario: " + reg.getElPropietario().getNombre()+ "\n";
-                        if (reg instanceof ConConvenio) {
-                            res += "- ¿Convenio?: si \n";
-                        }else{
-                            res += "- ¿Convenio?: no \n";
-                        }   
-                        res += "- Reparaciones acumuladas: " + reg.getElPropietario().getReparacionesAcumuladas()+ "\n";
-                        for(Reparacion rep : reg.getLasReparaciones()){
-                            res +=  "///////// \n";
-                            res += "- Reparaciones " + rep.toString()+ "\n"; 
-                        }
-
-                        res += "- valor a pagar: " + reg.calcularTotal(reg.getLasReparaciones())+ "\n";
-                    }
-
                 }else{
-                    jTextAreaConsola.setText("ERROR no hay reparaciones");
+                    res="ERROR no hay reparaciones";
                 }
             }
+            carAux.sort(
+                (c1,c2) -> c1.getFechaIngreso().compareTo(c2.getFechaIngreso())
+                );
+                for(Vehiculo reg : carAux){
+                    res = "el vehiculo con la placa"+ placa+" contiene: \n";
+                    res += "--------------------------------------\n";
+                    res += "- Placa: " + reg.getPlaca() + "\n";
+                    res += "- Modelo: " + reg.getModelo()+ "\n"; 
+                    res += "- Fecha de ingreso: " + reg.getFechaIngreso()+ "\n"; 
+                    res += "- ¿Paz y salvo?: " + reg.isPazSalvo()+ "\n"; 
+                    res += "- Propietario: " + reg.getElPropietario().getNombre()+ "\n";
+                    if (reg instanceof ConConvenio) {
+                        res += "- ¿Convenio?: si \n";
+                    }else{
+                        res += "- ¿Convenio?: no \n";
+                    }   
+                    res += "- Reparaciones acumuladas: " + reg.getElPropietario().getReparacionesAcumuladas()+ "\n";
+                    for(Reparacion rep : reg.getLasReparaciones()){
+                    res +=  "///////// \n";
+                    res += "- Reparaciones " + rep.toString()+ "\n"; 
+                    }
+
+                    res += "- valor a pagar: " + reg.calcularTotal(reg.getLasReparaciones())+ "\n";
+                    
+                }
             jTextAreaConsola.setText(res);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR: " +e.getMessage());
@@ -728,7 +731,7 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
             String mecanico = jTextFieldMecanico.getText();
             double valorInicial = Double.parseDouble(jTextFieldVInicial.getText());
             for(Vehiculo car : reparaciones){
-                if(car.getPlaca().equals(placa)){
+                if(car.getPlaca().equals(placa) && !car.isPazSalvo()){
                     lasReparaciones.add(new Reparacion(description, estado, valorInicial,mecanico));
                     car.setLasReparaciones(lasReparaciones);
                     Propietario elPropietario = car.getElPropietario();
@@ -891,19 +894,19 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         try {
             if (v.getPlaca().equalsIgnoreCase(placa) && !v.isPazSalvo()) {
                 boolean flag = false;
-                ArrayList<Reparacion> entregado= new ArrayList<>();
+               ;
                 for(Reparacion rep: v.getLasReparaciones()){
                     if(rep.getEstado().equals("En proceso" ) ){
                         JOptionPane.showMessageDialog(null, "faltan reparaciones por finalizar, por favor cambie el estado");
                         flag = false;
                         break;
                     }else{
-                        entregado.add(rep);
+                       
                         flag = true;
                     }
                 }
                 if(flag){
-                    double valor = v.calcularTotal(entregado);
+                    double valor = v.calcularBono(v);
                     v.setPazSalvo(true);
                     jTextAreaConsola.setText("Valor a pagar: $" + valor + "\nVehículo con placa " + placa.toUpperCase() + " está a paz y salvo. Se autoriza la salida.");
 

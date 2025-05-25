@@ -23,9 +23,6 @@ public class ConConvenio extends Vehiculo implements Serializable{
         return res;
     }
     
-    public double calcularBono(){        
-        return 0;
-    }
     
     public LocalDate getFechaAfiliacion() {
         return fechaAfiliacion;

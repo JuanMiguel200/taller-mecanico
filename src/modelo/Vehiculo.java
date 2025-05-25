@@ -22,7 +22,31 @@ public abstract class Vehiculo implements Calculos, Serializable{
         this.fechaSalida = fechaSalida;
         this.elPropietario = elPropietario;
     }
-
+    
+    @Override
+    public double calcularBono(Vehiculo ElVehiculo){    
+        int acumuladas = ElVehiculo.getElPropietario().getReparacionesAcumuladas();
+        double precio = ElVehiculo.calcularTotal(ElVehiculo.getLasReparaciones());
+        switch (acumuladas) {
+            case 4:
+                precio = calcularTotal(ElVehiculo.getLasReparaciones());
+                precio = precio *0.95;
+                break;
+            case 8:
+                precio = calcularTotal(ElVehiculo.getLasReparaciones());
+                precio = precio *0.90;
+                break;
+            case 12:
+                precio = calcularTotal(ElVehiculo.getLasReparaciones());
+                precio = precio *0.85;
+                break;
+            default:
+                if(acumuladas <12){
+                    ElVehiculo.getElPropietario().setReparacionesAcumuladas(0);
+                }
+        }
+        return precio;
+    }
     public boolean isPazSalvo() {
         return pazSalvo;
     }

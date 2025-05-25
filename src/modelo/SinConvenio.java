@@ -20,9 +20,7 @@ public class SinConvenio extends Vehiculo implements Serializable{
         return res;
     }
     
-    public double calcularBono(){        
-        return 0;
-    }
+    
 
     public String getAseguradora() {
         return aseguradora;
