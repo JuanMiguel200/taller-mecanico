@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ConConvenio extends Vehiculo implements Serializable{
     private LocalDate fechaAfiliacion;
-
+    private final double DESCUENTO = 0.8;
     public ConConvenio(LocalDate fechaAfiliacion, String marca, String placa, int modelo, LocalDate fechaInfreso, LocalDate fechaSalida, Propietario elPropietario) {
         super(marca, placa, modelo, fechaInfreso, fechaSalida, elPropietario);
         this.fechaAfiliacion = fechaAfiliacion;
@@ -19,7 +19,7 @@ public class ConConvenio extends Vehiculo implements Serializable{
             res += rep.getValorInicial();
             
         }  
-        res = res*0.8;
+        res = res*DESCUENTO;
         return res;
     }
     
