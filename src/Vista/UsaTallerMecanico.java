@@ -614,92 +614,109 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         });
     }
     public void factura(ArrayList<Vehiculo> datos){
-        String placa = JOptionPane.showInputDialog(null, "ingrese la placa de la cual desea saber").toUpperCase();
-        String res = "";
-        for(Vehiculo car :datos){
-            if(car.getPlaca().toUpperCase().equals(placa) && !car.isPazSalvo()){
-                for(Reparacion rep : car.getLasReparaciones()){
-                    if(rep.getEstado().equals("Finalizado")){
-                        res += "--------------------------------------";
-                        res += "- Descripcion " + rep.getDescripcion()+ "\n"; 
-                        res += "- Valor inicial " + rep.getValorInicial()+ "\n"; 
-                        res += "- reparaciones acumuladas: " +car.getElPropietario().getReparacionesAcumuladas()+ "\n";
+        try {
+           String placa = JOptionPane.showInputDialog(null, "ingrese la placa de la cual desea saber").toUpperCase();
+            String res = "";
+            for(Vehiculo car :datos){
+                if(car.getPlaca().toUpperCase().equals(placa) && !car.isPazSalvo()){
+                    for(Reparacion rep : car.getLasReparaciones()){
+                        if(rep.getEstado().equals("Finalizado")){
+                            res += "--------------------------------------";
+                            res += "- Descripcion " + rep.getDescripcion()+ "\n"; 
+                            res += "- Valor inicial " + rep.getValorInicial()+ "\n"; 
+                            res += "- reparaciones acumuladas: " +car.getElPropietario().getReparacionesAcumuladas()+ "\n";
+                        }
+                        else{
+                            res = "ERROR: No han terminado todas las reparaciones vuelva a intentarlo en otro momento";
+                        }
+
                     }
-                    else{
-                        res = "ERROR: No han terminado todas las reparaciones vuelva a intentarlo en otro momento";
-                    }
-                        
+                    res += "- Valor Final " + car.calcularTotal(car.getLasReparaciones())+ "\n"; 
+                }else{
+                    res = "ERROR el vehiculo no existe o ya esta a paz y salvo";
                 }
-                res += "- Valor Final " + car.calcularTotal(car.getLasReparaciones())+ "\n"; 
             }
+            jTextAreaConsola.setText(res); 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " +e.getMessage());
         }
-        jTextAreaConsola.setText(res);
+        
     }
     public void cambiarEstado(ArrayList<Vehiculo> datos){
-        String placa = JOptionPane.showInputDialog(null, "ingrese la placa de la cual desea saber").toUpperCase();
-        ArrayList<String> opciones = new ArrayList<>();
-        for(Vehiculo car :datos){
-            if(car.getPlaca().equals(placa) && !car.isPazSalvo()){
-                for(Reparacion rep : car.getLasReparaciones()){
-                    if(rep.getEstado().equals("En proceso"))
-                        opciones.add(rep.getDescripcion());
+        try {
+            String placa = JOptionPane.showInputDialog(null, "ingrese la placa de la cual desea saber").toUpperCase();
+            ArrayList<String> opciones = new ArrayList<>();
+            for(Vehiculo car :datos){
+                if(car.getPlaca().equalsIgnoreCase(placa) && !car.isPazSalvo()){
+                    for(Reparacion rep : car.getLasReparaciones()){
+                        if(rep.getEstado().equals("En proceso"))
+                            opciones.add(rep.getDescripcion());
+                    }
                 }
             }
-        }
-        String seleccion = (String) JOptionPane.showInputDialog(
-            null,
-            "Elige una opción:",
-            "Selector",
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            opciones.toArray(),
-            opciones.getFirst()
-        );
-        for(Vehiculo car :datos){
-            if(car.getPlaca().equals(placa) && !car.isPazSalvo()){
-                for(Reparacion rep : car.getLasReparaciones()){
-                    if(rep.getEstado().equals("En proceso")&& rep.getDescripcion().equals(seleccion))
-                     rep.setEstado("Finalizado");
+            String seleccion = (String) JOptionPane.showInputDialog(
+                null,
+                "Elige una opción:",
+                "Selector",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opciones.toArray(),
+                opciones.getFirst()
+            );
+            for(Vehiculo car :datos){
+                if(car.getPlaca().equalsIgnoreCase(placa) && !car.isPazSalvo()){
+                    for(Reparacion rep : car.getLasReparaciones()){
+                        if(rep.getEstado().equals("En proceso")&& rep.getDescripcion().equals(seleccion))
+                         rep.setEstado("Finalizado");
+                    }
                 }
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " +e.getMessage());
         }
+        
     }
     public void reportePlaca(ArrayList<Vehiculo> losVehiculos){
-        String placa = JOptionPane.showInputDialog(null, "ingrese la placa de la cual desea saber").toUpperCase();
-        String res = "su factura contiene: \n";
-        for(Vehiculo car : losVehiculos){
-            if(car.getPlaca().toUpperCase().equals(placa) && car.getLasReparaciones().size() != 0){
-                ArrayList<Vehiculo> carAux = new ArrayList<>();
-                carAux.add(car);
-                carAux.sort(
-                (c2,c1) -> c1.getFechaIngreso().compareTo(c2.getFechaIngreso())
-                );
-                for(Vehiculo reg : carAux){
-                    res += "--------------------------------------\n";
-                    res += "- Placa: " + reg.getPlaca() + "\n";
-                    res += "- Modelo: " + reg.getModelo()+ "\n"; 
-                    res += "- Fecha de ingreso: " + reg.getFechaIngreso()+ "\n"; 
-                    res += "- ¿Paz y salvo?: " + reg.isPazSalvo()+ "\n"; 
-                    res += "- Propietario: " + reg.getElPropietario().getNombre()+ "\n";
-                    if (reg instanceof ConConvenio) {
-                        res += "- ¿Convenio?: si \n";
-                    }else{
-                        res += "- ¿Convenio?: no \n";
-                    }   
-                    res += "- Reparaciones acumuladas: " + reg.getElPropietario().getReparacionesAcumuladas()+ "\n";
-                    for(Reparacion rep : reg.getLasReparaciones()){
-                        res +=  "///////// \n";
-                        res += "- Reparaciones " + rep.toString()+ "\n"; 
+        try {
+            String placa = JOptionPane.showInputDialog(null, "ingrese la placa de la cual desea saber").toUpperCase();
+            String res = "su factura contiene: \n";
+            for(Vehiculo car : losVehiculos){
+                if(car.getPlaca().toUpperCase().equals(placa) && car.getLasReparaciones().size() != 0){
+                    ArrayList<Vehiculo> carAux = new ArrayList<>();
+                    carAux.add(car);
+                    carAux.sort(
+                    (c2,c1) -> c1.getFechaIngreso().compareTo(c2.getFechaIngreso())
+                    );
+                    for(Vehiculo reg : carAux){
+                        res += "--------------------------------------\n";
+                        res += "- Placa: " + reg.getPlaca() + "\n";
+                        res += "- Modelo: " + reg.getModelo()+ "\n"; 
+                        res += "- Fecha de ingreso: " + reg.getFechaIngreso()+ "\n"; 
+                        res += "- ¿Paz y salvo?: " + reg.isPazSalvo()+ "\n"; 
+                        res += "- Propietario: " + reg.getElPropietario().getNombre()+ "\n";
+                        if (reg instanceof ConConvenio) {
+                            res += "- ¿Convenio?: si \n";
+                        }else{
+                            res += "- ¿Convenio?: no \n";
+                        }   
+                        res += "- Reparaciones acumuladas: " + reg.getElPropietario().getReparacionesAcumuladas()+ "\n";
+                        for(Reparacion rep : reg.getLasReparaciones()){
+                            res +=  "///////// \n";
+                            res += "- Reparaciones " + rep.toString()+ "\n"; 
+                        }
+
+                        res += "- valor a pagar: " + reg.calcularTotal(reg.getLasReparaciones())+ "\n";
                     }
-                    
-                    res += "- valor a pagar: " + reg.calcularTotal(reg.getLasReparaciones())+ "\n";
+
+                }else{
+                    jTextAreaConsola.setText("ERROR no hay reparaciones");
                 }
-                    
-            }else{
-                jTextAreaConsola.setText("ERROR no hay reparaciones");
             }
+            jTextAreaConsola.setText(res);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " +e.getMessage());
         }
-        jTextAreaConsola.setText(res);
+        
     }
     public void agregarReparacion(ArrayList<Vehiculo> reparaciones){
         try {
@@ -839,25 +856,29 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
         String res = "Los Vehiculos son:\n";
         
     if (datos.isEmpty()) {
-        jTextAreaConsola.setText("No hay vehículos registrados.\n");
+        res = "No hay vehículos registrados.\n";
     } else {
-       
-        for (Vehiculo reg : datos) {
-            if(!reg.isPazSalvo()){
-                res += "--------------------------------------\n";
-                res += "- Placa: " + reg.getPlaca() + "\n";
-                res += "- Número de Modelo: " + reg.getModelo()+ "\n"; 
-                res += "- Propietario: " + reg.getElPropietario().getNombre()+ "\n";
-                if (reg instanceof ConConvenio) {
-                    res += "- ¿Convenio?: si \n";
-                }else{
-                    res += "- ¿Convenio?: no \n";
+        try {
+            for (Vehiculo reg : datos) {
+                if(!reg.isPazSalvo()){
+                    res += "--------------------------------------\n";
+                    res += "- Placa: " + reg.getPlaca() + "\n";
+                    res += "- Número de Modelo: " + reg.getModelo()+ "\n"; 
+                    res += "- Propietario: " + reg.getElPropietario().getNombre()+ "\n";
+                    if (reg instanceof ConConvenio) {
+                        res += "- ¿Convenio?: si \n";
+                    }else{
+                        res += "- ¿Convenio?: no \n";
+                    }
+                    res += "- Numero de reparaciones: " + reg.getElPropietario().getReparacionesAcumuladas()+ "\n";
+                    res += "- valor a pagar: " + reg.calcularTotal(reg.getLasReparaciones())+ "\n";
+
                 }
-                res += "- Numero de reparaciones: " + reg.getElPropietario().getReparacionesAcumuladas()+ "\n";
-                res += "- valor a pagar: " + reg.calcularTotal(reg.getLasReparaciones())+ "\n";
-                
-            }
+            } 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " +e.getMessage());
         }
+        
 
     }  
         return res;
@@ -865,40 +886,41 @@ public class UsaTallerMecanico extends javax.swing.JFrame {
     
     public void entregarVehiculo(ArrayList<Vehiculo> lista) {
     String placa = JOptionPane.showInputDialog(null,"Ingrese la placa del vehículo que va a salir del taller:");
-    boolean encontrado = true;
-
+   
     for (Vehiculo v : lista) {
-        
-        if (v.getPlaca().equalsIgnoreCase(placa) && !v.isPazSalvo()) {
-            boolean flag = false;
-            ArrayList<Reparacion> entregado= new ArrayList<>();
-            for(Reparacion rep: v.getLasReparaciones()){
-                if(rep.getEstado().equals("En proceso" ) ){
-                    JOptionPane.showMessageDialog(null, "faltan reparaciones por finalizar, por favor cambie el estado");
-                    flag = false;
-                    break;
-                }else{
-                    entregado.add(rep);
-                    flag = true;
+        try {
+            if (v.getPlaca().equalsIgnoreCase(placa) && !v.isPazSalvo()) {
+                boolean flag = false;
+                ArrayList<Reparacion> entregado= new ArrayList<>();
+                for(Reparacion rep: v.getLasReparaciones()){
+                    if(rep.getEstado().equals("En proceso" ) ){
+                        JOptionPane.showMessageDialog(null, "faltan reparaciones por finalizar, por favor cambie el estado");
+                        flag = false;
+                        break;
+                    }else{
+                        entregado.add(rep);
+                        flag = true;
+                    }
                 }
+                if(flag){
+                    double valor = v.calcularTotal(entregado);
+                    v.setPazSalvo(true);
+                    jTextAreaConsola.setText("Valor a pagar: $" + valor + "\nVehículo con placa " + placa.toUpperCase() + " está a paz y salvo. Se autoriza la salida.");
+
+                }
+
             }
-            if(flag){
-                double valor = v.calcularTotal(entregado);
-                v.setPazSalvo(true);
-                jTextAreaConsola.setText("Valor a pagar: $" + valor + "\nVehículo con placa " + placa.toUpperCase() + " está a paz y salvo. Se autoriza la salida.");
-                encontrado = true;
-            }
-            
-        }
-        else{
-            encontrado = false;
-            
-        }
-        
-    }
-    if(!encontrado){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "no se encontró el vehiculo que buscaba o ya está paz y salvo");
         }
+        
+        
+        
+    }
+    
+            
+        
+            
 }
 
 
